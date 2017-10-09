@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WRAP302_P07_Client</string>
+    <string name="welcome_message">Welcome to Zombie Dice!</string>
+    <string name="join_game">Join a game!</string>
+    <string name="string_or">Or</string>
+    <string name="create_game">Create a game!</string>
+    <string name="enter_room_code">Enter room code:</string>
+    <string name="number_players">Enter the number of players that you want in your game:</string>
+    <string name="room_code">Room Code:</string>
+    <string name="string_players">Players</string>
+    <string name="start_early">(You may start early, if you have at least 2 players)</string>
+    <string name="start_game">Start Game</string>
+</resources>
