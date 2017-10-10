@@ -23,7 +23,7 @@
         android:text="AAAA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView4"
+        android:id="@+id/lobby_room_code_txt"
         android:textAlignment="center"
         android:textSize="24sp"/>
 
@@ -43,13 +43,13 @@
         android:text="@string/start_game"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button"
+        android:id="@+id/lobby_start_game_btn"
         android:textAlignment="center"/>
 
     <TextView
         android:text="@string/start_early"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView10"
+        android:id="@+id/lobby_bottom_txt"
         android:textAlignment="center"/>
 </LinearLayout>

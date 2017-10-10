@@ -8,25 +8,53 @@ import java.net.Socket;
 /**
  * Created by Antin on 10/9/2017.
  */
-public class CreateGame extends Thread
+public class CreateGame extends ServerRequest
 {
     private MainActivity mainActivity;
+    private int numPlayers;
+    private String roomCode;
 
-    public CreateGame(MainActivity mainActivity)
+    public CreateGame(MainActivity mainActivity, int numPlayers)
     {
         this.mainActivity = mainActivity;
+        this.numPlayers = numPlayers;
     }
 
     @Override
     public void run()
     {
+        super.run();
+
         try
         {
-            Socket socket = new Socket("165.255.244.177", 123);
+            out.println(MainActivity.CREATE_GAME);
+            out.println(numPlayers);
+            String inLine = in.readLine();
+
+            if (inLine.equals(MainActivity.JOIN_SUCCESSFUL))
+                result = true;
+
+            //read room code
+            roomCode = in.readLine();
 
         } catch (IOException e)
         {
             e.printStackTrace();
         }
+
+        handleResult();
+    }
+
+    @Override
+    protected void handleResult()
+    {
+        mainActivity.runOnUiThread(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                mainActivity.createGame(result, roomCode);
+            }
+        });
     }
 }
