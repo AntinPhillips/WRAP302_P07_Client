@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import wrap.wrap302_p07_client.server_operations.AddPlayers;
 import wrap.wrap302_p07_client.server_operations.LobbyListener;
+import wrap.wrap302_p07_client.server_operations.StartGame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +27,7 @@ public class LobbyActivity extends AppCompatActivity
         setContentView(R.layout.activity_lobby);
 
         players = new ArrayList<>();
-        adapter = new LobbyListAdapter(this, players);
+        adapter = new LobbyListAdapter(this, players, true);
         ((ListView) findViewById(R.id.lobby_player_listview)).setAdapter(adapter);
 
         Intent intent = getIntent();
@@ -45,7 +47,8 @@ public class LobbyActivity extends AppCompatActivity
                     @Override
                     public void onClick(View view)
                     {
-                        Toast.makeText(LobbyActivity.this, "Start game?", Toast.LENGTH_SHORT).show();
+                        new StartGame().start();
+                        Toast.makeText(LobbyActivity.this, "Please wait. DON'T PRESS AGAIN!", Toast.LENGTH_SHORT).show();
                     }
                 });
                 break;
@@ -86,5 +89,11 @@ public class LobbyActivity extends AppCompatActivity
     public void addPlayer(Player player)
     {
         adapter.add(player);
+    }
+
+    public void startGame()
+    {
+        startActivity(new Intent(this, GameActivity.class));
+        finish();
     }
 }

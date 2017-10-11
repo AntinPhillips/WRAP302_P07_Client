@@ -23,6 +23,12 @@ public class MainActivity extends AppCompatActivity
     public static final String NEW_PLAYER = "7";
     public static final String GAME_STARTING = "8";
     public static final String PLAYER_READY = "9";
+    public static final String ROLL = "10";
+    public static final String END_TURN = "11";
+    public static final String DICE_VALUES = "12";
+    public static final String GAME_OVER = "13";
+    public static final String DISCONNECT = "14";
+    public static final String SAME_TURN = "14";
 
     public static Socket socket;
 
@@ -44,7 +50,11 @@ public class MainActivity extends AppCompatActivity
                     return;
                 }
 
-                new CreateGame(MainActivity.this, numPlayers).start();
+                String name = ((EditText) findViewById(R.id.main_name_edtTxt)).getText().toString();
+                if (name.equals(""))
+                    name = "Unnamed";
+
+                new CreateGame(MainActivity.this, numPlayers, name).start();
             }
         });
 
@@ -54,7 +64,12 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view)
             {
                 String roomCode = ((EditText) findViewById(R.id.main_room_code_edtTxt)).getText().toString();
-                new JoinGame(MainActivity.this, roomCode).start();
+
+                String name = ((EditText) findViewById(R.id.main_name_edtTxt)).getText().toString();
+                if (name.equals(""))
+                    name = "Unnamed";
+
+                new JoinGame(MainActivity.this, roomCode, name).start();
             }
         });
     }
@@ -69,7 +84,7 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, LobbyActivity.class);
             intent.putExtra("Type", CREATE_GAME);
             intent.putExtra("RoomCode", roomCode);
-            startActivity(intent);
+            startActivityForResult(intent, 123);
         }
     }
 
@@ -83,7 +98,7 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, LobbyActivity.class);
             intent.putExtra("Type", JOIN_GAME);
             intent.putExtra("RoomCode", ((EditText) findViewById(R.id.main_room_code_edtTxt)).getText().toString());
-            startActivity(intent);
+            startActivityForResult(intent, 123);
         }
     }
 }

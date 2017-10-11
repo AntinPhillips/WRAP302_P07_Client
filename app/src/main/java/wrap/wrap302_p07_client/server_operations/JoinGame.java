@@ -11,11 +11,13 @@ public class JoinGame extends ServerRequest
 {
     private MainActivity mainActivity;
     private String roomCode;
+    private String name;
 
-    public JoinGame(MainActivity mainActivity, String roomCode)
+    public JoinGame(MainActivity mainActivity, String roomCode, String name)
     {
         this.mainActivity = mainActivity;
         this.roomCode = roomCode;
+        this.name = name;
     }
 
     @Override
@@ -27,6 +29,7 @@ public class JoinGame extends ServerRequest
         {
             out.println(MainActivity.JOIN_GAME);
             out.println(roomCode);
+            out.println(name);
 
             String inLine = in.readLine();
 

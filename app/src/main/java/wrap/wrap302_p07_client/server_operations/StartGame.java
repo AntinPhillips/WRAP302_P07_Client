@@ -1,17 +1,19 @@
 package wrap.wrap302_p07_client.server_operations;
 
-import wrap.wrap302_p07_client.LobbyActivity;
+import wrap.wrap302_p07_client.MainActivity;
 
 /**
- * Created by Antin on 10/10/2017.
+ * Created by Antin on 10/11/2017.
  */
 public class StartGame extends ServerRequest
 {
-    private LobbyActivity lobbyActivity;
-
-    public StartGame(LobbyActivity lobbyActivity)
+    @Override
+    public void run()
     {
-        this.lobbyActivity = lobbyActivity;
+        super.run();
+        out.println(MainActivity.START_GAME);
+        out.flush();
+        System.out.println("Sent START GAME PACKET");
     }
 
     @Override

@@ -8,7 +8,7 @@ import java.net.Socket;
 /**
  * Created by Antin on 10/10/2017.
  */
-public abstract class ServerRequest extends Thread implements Serializable
+public abstract class ServerRequest extends Thread
 {
     protected Socket socket;
     protected BufferedReader in;
@@ -20,8 +20,16 @@ public abstract class ServerRequest extends Thread implements Serializable
     {
         try
         {
-            if (socket == null) //a quick fix of NOTE! xD But you probably won't understand what I'm fixing with this, or why it's bad, so it's fine ;)
+            socket = MainActivity.socket;
+
+            if (MainActivity.socket == null) //a quick fix of NOTE! xD
             {
+                System.out.println("");
+                System.out.println("");
+                System.out.println("Creating new socket... This is PROBABLY bad news if you're seeing this...");
+                System.out.println("");
+                System.out.println("");
+
                 socket = new Socket("165.255.244.177", 123);
                 MainActivity.socket = socket;
             }

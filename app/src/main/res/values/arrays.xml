@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="die_icons">
+        <item>@drawable/green_brain</item>
+        <item>@drawable/green_runner</item>
+        <item>@drawable/green_shotgun</item>
+        <item>@drawable/yellow_brain</item>
+        <item>@drawable/yellow_runner</item>
+        <item>@drawable/yellow_shotgun</item>
+        <item>@drawable/red_brain</item>
+        <item>@drawable/red_runner</item>
+        <item>@drawable/red_shotgun</item>
+    </array>
+</resources>

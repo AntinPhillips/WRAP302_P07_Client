@@ -13,11 +13,13 @@ public class CreateGame extends ServerRequest
     private MainActivity mainActivity;
     private int numPlayers;
     private String roomCode;
+    private String name;
 
-    public CreateGame(MainActivity mainActivity, int numPlayers)
+    public CreateGame(MainActivity mainActivity, int numPlayers, String name)
     {
         this.mainActivity = mainActivity;
         this.numPlayers = numPlayers;
+        this.name = name;
     }
 
     @Override
@@ -29,6 +31,7 @@ public class CreateGame extends ServerRequest
         {
             out.println(MainActivity.CREATE_GAME);
             out.println(numPlayers);
+            out.println(name);
             String inLine = in.readLine();
 
             if (inLine.equals(MainActivity.JOIN_SUCCESSFUL))

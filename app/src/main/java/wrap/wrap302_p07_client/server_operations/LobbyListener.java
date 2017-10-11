@@ -46,9 +46,20 @@ public class LobbyListener extends ServerRequest
 
                         break;
                     }
-                    case MainActivity.START_GAME:
+                    case MainActivity.GAME_STARTING:
                     {
-                        //well... best figure this one out
+                        lobbyActivity.runOnUiThread(new Runnable()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                lobbyActivity.startGame();
+                            }
+                        });
+
+                        System.out.println("LOBBY LISTENER WANTS TO START GAME");
+
+                        //and stop this listener :)
                         return;
                     }
                 }
